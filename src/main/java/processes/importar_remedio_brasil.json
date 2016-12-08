@@ -1,0 +1,9 @@
+{
+  "name": "Importar Remédio Brasil",
+  "taskGroup": [
+    {
+      "name": "dentroDaValida",
+      "beanName": "negocio.DentroDaValidade"
+    }
+  ]
+}
