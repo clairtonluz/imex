@@ -1,34 +1,30 @@
 package engine;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Set;
 
-/**
- * Created by clairton on 07/12/16.
- */
 public class Context {
-    private final Set<String> erros = new LinkedHashSet<>();
-    private final Map<String, Object> dados = new HashMap<>();
 
+	private final Set<String> errors = new LinkedHashSet<>();
+	private final Map<String, Object> data = new HashMap<>();
 
-    public void add(String key, Object value) {
-        dados.put(key, value);
-    }
+	public void addError(String msg) {
+		errors.add(msg);
+	}
 
-    public <T> T get(String key) {
-        return (T) dados.get(key);
-    }
+	public Set<String> getErrors() {
+		return Collections.unmodifiableSet(errors);
+	}
 
-    public void addError(String erro) {
+	public void add(String key, Object value) {
+		data.put(key, value);
+	}
 
-        erros.add(erro);
-    }
-
-    public Set<String> getErros() {
-        return Collections.unmodifiableSet(erros);
-    }
-
-    public boolean hasError(){
-        return !erros.isEmpty();
-    }
-
+	@SuppressWarnings("unchecked")
+	public <T extends Object> T get(String key) {
+		return (T) data.get(key);
+	}
 }
